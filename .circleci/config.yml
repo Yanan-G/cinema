@@ -68,9 +68,9 @@ jobs:
       - *install-dependencies
       - *save-cache
       - run:
-          name: Copy Infrastructure Folder
+          name: Copy Infra Folder
           command: |
-            cp -r infrastructure artifacts/infrastructure
+            cp -r infra artifacts/infra
       - persist_to_workspace:
           root: ./
           paths:
@@ -114,7 +114,7 @@ jobs:
       - run:
           name: Terraform Validate & Format
           command: |
-            cd infrastructure/
+            cd infra/
             terraform init -backend=false
             terraform validate
             terraform fmt -check
@@ -129,14 +129,14 @@ jobs:
       - run:
           name: Terraform Plan
           command: |
-            cd artifacts/infrastructure/
+            cd artifacts/infra/
             terraform init
             terraform workspace select ${CIRCLE_BRANCH} || terraform workspace new ${CIRCLE_BRANCH}
             terraform plan
       - run:
           name: Terraform Apply
           command: |
-            cd artifacts/infrastructure/
+            cd artifacts/infra/
             terraform workspace select ${CIRCLE_BRANCH}
             terraform apply --auto-approve
             terraform output cinema_app_bucket_name > ../cinema_bucket_name.txt
@@ -268,7 +268,7 @@ jobs:
       - run:
           name: Terraform Destroy
           command: |
-            cd infrastructure/
+            cd infra/
             terraform init
             terraform workspace select ${CIRCLE_BRANCH} || terraform workspace new ${CIRCLE_BRANCH}
             terraform destroy --auto-approve
