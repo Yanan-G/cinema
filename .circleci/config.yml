@@ -75,15 +75,15 @@ jobs:
       #     paths:
       #       - artifacts
 
-  # linting:
-  #   executor: app-executor
-  #   steps:
-  #     - checkout
-  #     - *show-current-branch-name
-  #     - *restore-cache
-  #     - run:
-  #         name: Run linting
-  #         command: npm run lint
+  linting:
+    executor: app-executor
+    steps:
+      - checkout
+      - *show-current-branch-name
+      - *restore-cache
+      - run:
+          name: Run linting
+          command: npm run lint
 
   # prettier:
   #   executor: app-executor
@@ -487,9 +487,18 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - deploy-to-aws-s3:
+      - linting:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - development
+                - staging
+                - master
+      - deploy-to-aws-s3:
+          requires:
+            - linting
           filters:
             branches:
               only:
