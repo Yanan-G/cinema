@@ -1,4 +1,9 @@
-import { MOVIE_LIST, RESPONSE_PAGE, LOAD_MORE_RESULTS, MOVIE_TYPE } from '../types';
+import {
+  MOVIE_LIST,
+  RESPONSE_PAGE,
+  LOAD_MORE_RESULTS,
+  MOVIE_TYPE
+} from '../types';
 
 const initialState = {
   list: [],

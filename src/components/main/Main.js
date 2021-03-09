@@ -5,10 +5,19 @@ import PropTypes from 'prop-types';
 import './Main.scss';
 import MainContent from '../content/main-content/MainContent';
 import Spinner from '../spinner/Spinner';
-import { loadMoreMovies, setResponsePageNumber } from '../../redux/actions/movies';
+import {
+  loadMoreMovies,
+  setResponsePageNumber
+} from '../../redux/actions/movies';
 
 const Main = (props) => {
-  const { loadMoreMovies, page, totalPages, setResponsePageNumber, movieType } = props;
+  const {
+    loadMoreMovies,
+    page,
+    totalPages,
+    setResponsePageNumber,
+    movieType
+  } = props;
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const mainRef = useRef();
@@ -37,7 +46,9 @@ const Main = (props) => {
 
   const handleScroll = () => {
     const containerHeight = mainRef.current.getBoundingClientRect().height;
-    const { top: bottomLineTop } = bottomLineRef.current.getBoundingClientRect();
+    const {
+      top: bottomLineTop
+    } = bottomLineRef.current.getBoundingClientRect();
     if (bottomLineTop <= containerHeight) {
       // fetch data
       fetchData();
@@ -70,4 +81,7 @@ const mapStateToProps = (state) => ({
   movieType: state.movies.movieType
 });
 
-export default connect(mapStateToProps, { loadMoreMovies, setResponsePageNumber })(Main);
+export default connect(mapStateToProps, {
+  loadMoreMovies,
+  setResponsePageNumber
+})(Main);

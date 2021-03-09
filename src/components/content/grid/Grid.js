@@ -21,7 +21,11 @@ const Grid = (props) => {
       <div className="grid">
         {movieData.map((data) => (
           <div key={uuidv4()}>
-            <LazyImage className="grid-cell" src={`${IMAGE_URL}${data.poster_path}`} alt="placeholder">
+            <LazyImage
+              className="grid-cell"
+              src={`${IMAGE_URL}${data.poster_path}`}
+              alt="placeholder"
+            >
               <div className="grid-read-more">
                 <button className="grid-cell-button">Read More</button>
               </div>
