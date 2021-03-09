@@ -1,12 +1,12 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 }
 
 terraform {
   backend "s3" {
-    bucket  = "udemy-cinema-tf-state"
-    key     = "udemy-cinema.tfstate"
-    region  = "us-east-2"
+    bucket  = "react-cinema-tf-state"
+    key     = "react-cinema.tfstate"
+    region  = "us-east-1"
     encrypt = true
   }
 }
