@@ -1,7 +1,7 @@
 variable "prefix" {
-  default = "udemy-cinema"
+  default = "react-cinema"
 }
 
 variable "project" {
-  default = "udemy-cinema-app"
+  default = "react-cinema-app"
 }
