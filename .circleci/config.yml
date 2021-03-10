@@ -495,9 +495,9 @@ workflows:
                 - staging
                 - master
       - terraform-validate:
-          # requires:
-          #   - linting
-          #   - prettier
+          requires:
+            - linting
+            - prettier
           filters:
             branches:
               only:
