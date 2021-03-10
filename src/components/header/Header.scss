@@ -18,7 +18,7 @@
 
 .header-navbar {
   display: grid;
-  grid-template: "link . . menu search";
+  grid-template: 'link . . menu search';
   grid-template-columns: max-content 1fr 1fr max-content max-content;
   height: 50px;
   line-height: 50px;
@@ -31,6 +31,10 @@
   height: 170px;
   margin-left: 25px;
   margin-top: -5px;
+}
+
+.header-image img:hover {
+  cursor: pointer;
 }
 
 .header-nav {
@@ -61,6 +65,10 @@
 
 .header-nav-item a:hover {
   color: #3498db;
+}
+
+.header-list-name:hover {
+  cursor: pointer;
 }
 
 .header-menu-toggle .bar {
