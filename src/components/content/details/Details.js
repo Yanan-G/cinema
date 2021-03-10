@@ -37,10 +37,12 @@ const Details = (props) => {
 
   return (
     <>
-      {loading ? (
+      {loading
+        ? (
         <Spinner />
-      ) : (
-        details && (
+          )
+        : (
+            details && (
           <div className="movie-container">
             <div
               className="movie-bg"
@@ -93,8 +95,8 @@ const Details = (props) => {
               </div>
             </div>
           </div>
-        )
-      )}
+            )
+          )}
     </>
   );
 };

@@ -476,18 +476,18 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - prettier:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - development
-                - staging
-                - master
+      # - prettier:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         only:
+      #           - development
+      #           - staging
+      #           - master
       - linting:
           requires:
-            - prettier
+            - build
           filters:
             branches:
               only:
