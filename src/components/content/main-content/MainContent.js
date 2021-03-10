@@ -7,25 +7,13 @@ import Slideshow from '../slide-show/Slideshow';
 import Paginate from '../paginate/Paginate';
 import Grid from '../grid/Grid';
 import { IMAGE_URL } from '../../../services/movies.service';
-import {
-  getMovies,
-  setResponsePageNumber
-} from '../../../redux/actions/movies';
+import { getMovies, setResponsePageNumber } from '../../../redux/actions/movies';
 
 const MainContent = (props) => {
-  const {
-    list,
-    movieType,
-    totalPages,
-    page,
-    getMovies,
-    setResponsePageNumber
-  } = props;
+  const { list, movieType, totalPages, page, getMovies, setResponsePageNumber } = props;
   const [currentPage, setCurrentPage] = useState(page);
   const [images, setImages] = useState([]);
-  const randomMovies = list
-    .sort(() => Math.random() - Math.random())
-    .slice(0, 4);
+  const randomMovies = list.sort(() => Math.random() - Math.random()).slice(0, 4);
 
   const HEADER_TYPE = {
     now_playing: 'Now Playing',
@@ -82,11 +70,7 @@ const MainContent = (props) => {
       <div className="grid-movie-title">
         <div className="movieType">{HEADER_TYPE[movieType]}</div>
         <div className="paginate">
-          <Paginate
-            currentPage={currentPage}
-            totalPages={totalPages}
-            paginate={paginate}
-          />
+          <Paginate currentPage={currentPage} totalPages={totalPages} paginate={paginate} />
         </div>
       </div>
       <Grid />
@@ -110,6 +94,4 @@ const mapStateToProps = (state) => ({
   page: state.movies.page
 });
 
-export default connect(mapStateToProps, { getMovies, setResponsePageNumber })(
-  MainContent
-);
+export default connect(mapStateToProps, { getMovies, setResponsePageNumber })(MainContent);
