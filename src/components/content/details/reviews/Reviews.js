@@ -12,7 +12,9 @@ const Reviews = (props) => {
   return (
     <>
       <div className="movie-reviews">
-        <div className="div-title">Reviews {reviews.results.length > 0 ? reviews.results.length : ''}</div>
+        <div className="div-title">
+          Reviews {reviews.results.length > 0 ? reviews.results.length : ''}
+        </div>
         {reviews.results.length ? (
           reviews.results.map((data) => (
             <div className="reviews" key={uuidv4()}>

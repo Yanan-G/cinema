@@ -17,7 +17,10 @@ const LazyImage = (props) => {
         observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (!didCancel && (entry.intersectionRatio > 0 || entry.isIntersecting)) {
+              if (
+                !didCancel &&
+                (entry.intersectionRatio > 0 || entry.isIntersecting)
+              ) {
                 setImageSrc(src);
                 observer.unobserve(imageRef);
               }
@@ -44,7 +47,12 @@ const LazyImage = (props) => {
 
   return (
     <>
-      <div className={className} ref={setImageRef} style={{ backgroundImage: `url(${imageSrc})` }} alt={alt}>
+      <div
+        className={className}
+        ref={setImageRef}
+        style={{ backgroundImage: `url(${imageSrc})` }}
+        alt={alt}
+      >
         {children}
       </div>
     </>

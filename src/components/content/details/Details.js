@@ -42,7 +42,12 @@ const Details = (props) => {
       ) : (
         details && (
           <div className="movie-container">
-            <div className="movie-bg" style={{ backgroundImage: `url(${IMAGE_URL}${details.backdrop_path})` }}></div>
+            <div
+              className="movie-bg"
+              style={{
+                backgroundImage: `url(${IMAGE_URL}${details.backdrop_path})`
+              }}
+            ></div>
             <div className="movie-overlay"></div>
             <div className="movie-details">
               <div className="movie-image">
@@ -61,9 +66,14 @@ const Details = (props) => {
                     </ul>
                   </div>
                   <div className="rating">
-                    <Rating className="rating-stars" rating={details.vote_average} totalStars={10} />
+                    <Rating
+                      className="rating-stars"
+                      rating={details.vote_average}
+                      totalStars={10}
+                    />
                     &nbsp;
-                    <span>{details.vote_average}</span> <p>({details.vote_count}) reviews</p>
+                    <span>{details.vote_average}</span>{' '}
+                    <p>({details.vote_count}) reviews</p>
                   </div>
                   <Tabs>
                     <div label="Overview">

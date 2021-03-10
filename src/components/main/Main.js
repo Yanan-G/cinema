@@ -5,11 +5,21 @@ import PropTypes from 'prop-types';
 import './Main.scss';
 import MainContent from '../content/main-content/MainContent';
 import Spinner from '../spinner/Spinner';
-import { loadMoreMovies, setResponsePageNumber } from '../../redux/actions/movies';
+import {
+  loadMoreMovies,
+  setResponsePageNumber
+} from '../../redux/actions/movies';
 import SearchResult from '../content/search-result/SearchResult';
 
 const Main = (props) => {
-  const { loadMoreMovies, page, totalPages, setResponsePageNumber, movieType, searchResult } = props;
+  const {
+    loadMoreMovies,
+    page,
+    totalPages,
+    setResponsePageNumber,
+    movieType,
+    searchResult
+  } = props;
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const mainRef = useRef();
@@ -38,7 +48,9 @@ const Main = (props) => {
 
   const handleScroll = () => {
     const containerHeight = mainRef.current.getBoundingClientRect().height;
-    const { top: bottomLineTop } = bottomLineRef.current.getBoundingClientRect();
+    const {
+      top: bottomLineTop
+    } = bottomLineRef.current.getBoundingClientRect();
     if (bottomLineTop <= containerHeight) {
       // fetch data
       fetchData();
@@ -48,7 +60,17 @@ const Main = (props) => {
   return (
     <>
       <div className="main" ref={mainRef} onScroll={handleScroll}>
-        {loading ? <Spinner /> : <>{searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}</>}
+        {loading ? (
+          <Spinner />
+        ) : (
+          <>
+            {searchResult && searchResult.length === 0 ? (
+              <MainContent />
+            ) : (
+              <SearchResult />
+            )}
+          </>
+        )}
         <div ref={bottomLineRef}></div>
       </div>
     </>
@@ -73,4 +95,7 @@ const mapStateToProps = (state) => ({
   searchResult: state.movies.searchResult
 });
 
-export default connect(mapStateToProps, { loadMoreMovies, setResponsePageNumber })(Main);
+export default connect(mapStateToProps, {
+  loadMoreMovies,
+  setResponsePageNumber
+})(Main);
