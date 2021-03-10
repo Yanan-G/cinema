@@ -18,6 +18,10 @@
   margin-right: 50px;
 }
 
+.tab-list-item:hover {
+  cursor: pointer;
+}
+
 .tab-list-active {
   color: #dcf836;
   border-bottom: 3px solid #dcf836;

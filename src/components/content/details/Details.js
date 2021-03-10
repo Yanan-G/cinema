@@ -18,7 +18,8 @@ const Details = (props) => {
   const { movieDetails, movie } = props;
   const [details, setDetails] = useState();
   const [loading, setLoading] = useState(false);
-  const { id } = useParams();
+  let { id } = useParams();
+  id = encodeURIComponent(id);
 
   useEffect(() => {
     setLoading(true);
