@@ -94,7 +94,7 @@ jobs:
       - *restore-cache
       - run:
           name: Run prettier check
-          command: npm run prettier:check
+          command: npm run prettier:write
 
   # unit-test:
   #   executor: app-executor
@@ -476,15 +476,6 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - linting:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - development
-                - staging
-                - master
       - prettier:
           requires:
             - build
@@ -494,10 +485,19 @@ workflows:
                 - development
                 - staging
                 - master
+      - linting:
+          requires:
+            - prettier
+          filters:
+            branches:
+              only:
+                - development
+                - staging
+                - master
+              
       - terraform-validate:
           requires:
             - linting
-            - prettier
           filters:
             branches:
               only:
